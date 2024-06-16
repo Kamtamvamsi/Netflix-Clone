@@ -22,3 +22,23 @@ const requests = {
 function truncate(str, n){
     return str?.length > n? str.substr(0, n-1) + "..." : str;
 }
+
+//banner 
+fetch(requests.fetchNetflixOrignals)
+   .then((res) => res.json())
+
+   .then((data) => {
+    console.log(data.requests);
+
+    const setMovie = data.requests[math.floor(math.random() * data.requests.length - 1)];
+    
+    var banner = document.getElementById("banner");
+    var banner_title = document.getElementById("banner_title");
+    var banner_description = document.getElementById("banner_description")
+
+    banner.style.backgroundImage = 
+      "url("+ banner_url + setMovie.backdrop_path + ")";
+    banner_description.innerText    = truncate(setMovie.overview, 150); 
+                 
+   }
+)
